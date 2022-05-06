@@ -1,0 +1,40 @@
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <title>지정한 텍스트 파일을 읽어주는 웹</title>
+        <script src="tts.js"></script>
+    </head>
+    <body>
+        <p>
+            자바스크립트에서 제공하는 tts 기능을 활용한 텍스트 파일을 읽어주는 웹입니다.
+        </p>
+
+        <input id ="textfile" type="file" onchange="loadFile(this.files[0],0,300)">
+        <br>
+        <button id ="prev">이전</button>
+        <button id ="next">다음</button>
+        <pre id="output" style="overflow:scroll; width:100%;height:300px;"></pre>
+        <button id="play">재생</button>
+        <button id="pause">일시정지</button>
+        <button>정지</button>
+
+    <script>
+            var fi = await document.getElementById('textfile').text().toString().substr(0,100);
+            console.log(fi);
+            async function loadFile(file,f,s){
+                let txt = await file.text();
+                document.getElementById('output').textContent = txt.toString().substr(f,s);
+                
+            }
+            document.addEventListener("click",e => {
+                
+            })
+            document.addEventListener("click",e => {
+                if(e.target.id == "next" && fst > 0){
+                    fst = 300 * (fst + 1);
+                    loadFile(document.getElementById(textfile).file);
+                }
+            })
+    </script>   
+    </body>
+</html>
